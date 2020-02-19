@@ -15,6 +15,8 @@ import { PostFormComponent } from './components/post-form/post-form.component';
 import { SelectComponent } from './components/inputs/select/select.component';
 import { TextareaComponent } from './components/inputs/textarea/textarea.component';
 import { FileComponent } from './components/inputs/file/file.component';
+import { HomeComponent } from './views/home/home.component';
+import { CreatePostComponent } from './views/create-post/create-post.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { FileComponent } from './components/inputs/file/file.component';
     PostFormComponent,
     SelectComponent,
     TextareaComponent,
-    FileComponent
+    FileComponent,
+    HomeComponent,
+    CreatePostComponent
   ],
   imports: [
     BrowserModule,
