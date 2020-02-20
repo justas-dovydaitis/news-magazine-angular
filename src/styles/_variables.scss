@@ -1,0 +1,9 @@
+$color-light: hsl(0, 0%, 100%);
+$color-dark: hsl(0, 0%, 0%);
+$color-darker: hsl(0, 0%, 27%);
+$color-accent: hsl(16, 100%, 50%);
+
+$z-indexes: (
+    'sticky': 1020,
+    'fixed': 1030
+);

@@ -1,0 +1,53 @@
+@use '../../../../styles/variables';
+@use '../../../../styles/theme';
+@use '../../../../styles/breakpoints';
+
+.navbar-primary {
+    position: sticky;
+    z-index: map-get(variables.$z-indexes, 'sticky');
+    top: 0;
+
+    @include breakpoints.use-brakepoint('medium') {
+        flex-flow: row;
+        justify-content: space-between;
+    }
+    /***************************************************/
+
+    a.navbar-item:hover {
+        text-decoration: underline;
+    }
+    nav {
+        border-bottom: 1px solid theme.get-theme-color('background-accent');
+        flex-flow: row;
+        justify-content: space-between;
+        @include breakpoints.use-brakepoint('medium') {
+            border-bottom: none;
+        }
+    }
+    .date {
+        background-color: theme.get-theme-color('background-accent');
+        padding: 0 0.5rem;
+
+        @include breakpoints.use-brakepoint('small') {
+            width: auto;
+            text-align: center;
+            display: block;
+        }
+    }
+}
+.navbar-items-block {
+    display: flex;
+    &:not(nav) {
+        flex-flow: wrap;
+        justify-content: space-around;
+        @include breakpoints.use-brakepoint('small') {
+            flex-flow: row;
+        }
+        @include breakpoints.use-brakepoint('large') {
+            justify-content: flex-start;
+        }
+    }
+    @include breakpoints.use-brakepoint('medium') {
+        width: auto;
+    }
+}

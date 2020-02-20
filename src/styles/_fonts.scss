@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP:500,700,900|Roboto:300,400&display=swap');
+
+$font-heading: 'Noto Sans JP', sans-serif;
+$font-text: 'Roboto', sans-serif;
+
+@mixin text-primary {
+    font-family: $font-text;
+    font-weight: 400;
+}
+@mixin text-secondary {
+    font-family: $font-text;
+    font-weight: 300;
+}
+@mixin heading {
+    font-family: $font-heading;
+    font-weight: 500;
+}
+@mixin heading-bold {
+    font-family: $font-heading;
+    font-weight: 700;
+}

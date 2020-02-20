@@ -1,0 +1,26 @@
+@use '../../../styles/theme';
+
+.navbar {
+    display: flex;
+    align-items: center;
+    flex-flow: wrap;
+    background-color: theme.get-theme-color('background-secondary');
+    padding-left: 1.66rem;
+    padding-right: 1.66rem;
+
+    * {
+        height: 100%;
+        text-decoration: none;
+        color: theme.get-theme-color('text-secondary');
+    }
+    &-items-block {
+        width: 100%;
+
+        &-push-left {
+            margin-left: auto;
+        }
+    }
+    &-item {
+        margin: 0.5rem 0.5rem;
+    }
+}

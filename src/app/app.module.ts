@@ -8,7 +8,7 @@ import { environment } from '../environments/environment';
 import { PostComponent } from './components/post/post.component';
 import { FeaturedPostComponent } from './components/featured-post/featured-post.component';
 import { LatestPostComponent } from './components/latest-post/latest-post.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { PrimaryNavbarComponent } from'./components/navbars/primary-navbar/primary-navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PostFormComponent } from './components/post-form/post-form.component';
@@ -17,6 +17,7 @@ import { TextareaComponent } from './components/inputs/textarea/textarea.compone
 import { FileComponent } from './components/inputs/file/file.component';
 import { HomeComponent } from './views/home/home.component';
 import { CreatePostComponent } from './views/create-post/create-post.component';
+import { SecondaryNavbarComponent } from './components/navbars/secondary-navbar/secondary-navbar.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { CreatePostComponent } from './views/create-post/create-post.component';
     PostComponent,
     FeaturedPostComponent,
     LatestPostComponent,
-    NavbarComponent,
+    PrimaryNavbarComponent,
     FooterComponent,
     HeaderComponent,
     PostFormComponent,
@@ -32,7 +33,8 @@ import { CreatePostComponent } from './views/create-post/create-post.component';
     TextareaComponent,
     FileComponent,
     HomeComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    SecondaryNavbarComponent
   ],
   imports: [
     BrowserModule,
