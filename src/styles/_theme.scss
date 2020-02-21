@@ -1,0 +1,20 @@
+@use 'variables';
+
+$theme: (
+    'background-primary': variables.$color-light,
+    'background-secondary': variables.$color-dark,
+    'background-tertiary': variables.$color-darker,
+    'background-accent': variables.$color-accent,
+    'text-primary': variables.$color-dark,
+    'text-secondary': variables.$color-light,
+    'text-accent': variables.$color-accent
+);
+
+@function get-theme-color($key) {
+    @if (map-has-key($theme, $key)) {
+        @return map-get($theme, $key);
+    } @else {
+        @warn "Color unavailable in `#{$theme}`. "
+    + "Available colors are: #{map-keys($theme)}.";
+    }
+}

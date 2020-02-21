@@ -1,0 +1,25 @@
+$breakpoints: (
+    'small': (
+        min-width: 576px
+    ),
+    'medium': (
+        min-width: 768px
+    ),
+    'large': (
+        min-width: 992px
+    ),
+    'extra-large': (
+        min-width: 1200px
+    )
+) !default;
+
+@mixin use-brakepoint($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media #{inspect(map-get($breakpoints , $breakpoint ))} {
+            @content;
+        }
+    } @else {
+        @warn "Breakpoint unavailable in `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+    }
+}

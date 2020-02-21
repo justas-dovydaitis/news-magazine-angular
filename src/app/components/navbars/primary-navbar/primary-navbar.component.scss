@@ -1,0 +1,60 @@
+@use 'theme';
+@use 'breakpoints' as bp;
+@use 'variables' as vars;
+@import '../navbar.scss';
+
+:host {
+    @include navbar;
+    color: theme.get-theme-color('text-secondary');
+    background-color: theme.get-theme-color('background-secondary');
+    z-index: map-get(vars.$z-indexes, 'sticky');
+    top: 0;
+    position: sticky;
+
+    @include bp.use-brakepoint('medium') {
+        flex-flow: row;
+    }
+}
+.navbar-items-container {
+    display: flex;
+
+    @include bp.use-brakepoint('medium') {
+        width: auto;
+    }
+    &.socials-nav {
+        flex-flow: wrap;
+        margin-left: auto;
+        justify-content: space-around;
+        @include bp.use-brakepoint('small') {
+            flex-flow: row;
+        }
+        @include bp.use-brakepoint('large') {
+            justify-content: flex-start;
+        }
+    }
+
+    &.internal-nav {
+        border-bottom: 1px solid theme.get-theme-color('background-accent');
+        flex-flow: row;
+        justify-content: space-between;
+
+        @include bp.use-brakepoint('medium') {
+            border-bottom: none;
+        }
+    }
+}
+.navbar-item {
+    color: theme.get-theme-color('text-secondary');
+    margin: 0.5rem 0.5rem;
+}
+
+.date {
+    background-color: theme.get-theme-color('background-accent');
+    padding: 0 0.5rem;
+
+    @include bp.use-brakepoint('medium') {
+        // width: 100%;
+        text-align: center;
+        display: block;
+    }
+}

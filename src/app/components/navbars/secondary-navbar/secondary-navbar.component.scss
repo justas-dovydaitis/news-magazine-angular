@@ -1,0 +1,67 @@
+@use 'theme';
+@use 'breakpoints' as bp;
+@import '../navbar';
+
+:host {
+    @include navbar;
+    color: theme.get-theme-color('text-secondary');
+    background-color: theme.get-theme-color('background-secondary');
+    min-height: 3.5rem;
+    @include bp.use-brakepoint('medium') {
+        flex-direction: row-reverse;
+    }
+}
+.navbar-item {
+    height: 100%;
+    margin: 0;
+    padding: 1.4rem;
+    transition: ease-in-out 0.5s;
+    color: theme.get-theme-color('text-secondary');
+
+    &:hover {
+        color: theme.get-theme-color('text-accent');
+        text-decoration: none;
+    }
+    &.active {
+        background-color: #ff4500;
+        color: #ffffff;
+    }
+}
+.navbar-items-container {
+    &-right {
+        margin-left: auto;
+    }
+    &-collapsable {
+        display: none;
+        width: 100%;
+        text-align: center;
+
+        @include bp.use-brakepoint('medium') {
+            width: auto;
+            display: flex;
+        }
+        &-expanded {
+            display: flex;
+            flex-direction: column;
+            @include bp.use-brakepoint('medium') {
+                flex-direction: row;
+            }
+        }
+    }
+}
+.button-expand {
+    display: block;
+    @include bp.use-brakepoint('medium') {
+        display: none;
+    }
+}
+app-search-rounded {
+    height: 2rem;
+    width: 10rem;
+    @include bp.use-brakepoint('small') {
+        width: 15rem;
+    }
+    @include bp.use-brakepoint('medium') {
+        width: auto;
+    }
+}

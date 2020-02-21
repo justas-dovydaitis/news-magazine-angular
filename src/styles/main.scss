@@ -1,0 +1,30 @@
+@charset 'utf-8';
+@use 'breakpoints';
+@use 'variables';
+@use 'fonts';
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    @include fonts.text-primary;
+}
+
+h1,
+h2,
+h3 {
+    @include fonts.heading-bold;
+}
+h4,
+h5,
+h6 {
+    @include fonts.heading;
+}
+a {
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+}
