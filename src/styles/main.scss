@@ -22,3 +22,9 @@ h5,
 h6 {
     @include fonts.heading;
 }
+a {
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+}

@@ -1,0 +1,16 @@
+@use '../../../../styles/breakpoints';
+:host {
+    display: block;
+}
+input {
+    border-radius: 0.8rem;
+    border: 0;
+    height: 100%;
+    width: 100%;
+    + .icon {
+        display: inline-block;
+        position: relative;
+        left: -3rem;
+        top: 0.4rem;
+    }
+}

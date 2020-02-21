@@ -1,9 +1,14 @@
+@use 'theme';
+
 .cover {
     margin-top: 0;
-    background-color: #444444;
-    height: 130px;
+    background-color: theme.get-theme-color('background-tertiary');
+    height: 10rem;
     display: flex;
     flex-flow: column;
-    color: #FFFFFF;
+    color: theme.get-theme-color('text-secondary');
     justify-content: center;
+}
+h1 {
+    margin-left: 3rem;
 }

@@ -1,53 +1,60 @@
-@use '../../../../styles/variables';
-@use '../../../../styles/theme';
-@use '../../../../styles/breakpoints';
+@use 'theme';
+@use 'breakpoints' as bp;
+@use 'variables' as vars;
+@import '../navbar.scss';
 
-.navbar-primary {
-    position: sticky;
-    z-index: map-get(variables.$z-indexes, 'sticky');
+:host {
+    @include navbar;
+    color: theme.get-theme-color('text-secondary');
+    background-color: theme.get-theme-color('background-secondary');
+    z-index: map-get(vars.$z-indexes, 'sticky');
     top: 0;
+    position: sticky;
 
-    @include breakpoints.use-brakepoint('medium') {
+    @include bp.use-brakepoint('medium') {
         flex-flow: row;
-        justify-content: space-between;
-    }
-    /***************************************************/
-
-    a.navbar-item:hover {
-        text-decoration: underline;
-    }
-    nav {
-        border-bottom: 1px solid theme.get-theme-color('background-accent');
-        flex-flow: row;
-        justify-content: space-between;
-        @include breakpoints.use-brakepoint('medium') {
-            border-bottom: none;
-        }
-    }
-    .date {
-        background-color: theme.get-theme-color('background-accent');
-        padding: 0 0.5rem;
-
-        @include breakpoints.use-brakepoint('small') {
-            width: auto;
-            text-align: center;
-            display: block;
-        }
     }
 }
-.navbar-items-block {
+.navbar-items-container {
     display: flex;
-    &:not(nav) {
+
+    @include bp.use-brakepoint('medium') {
+        width: auto;
+    }
+    &.socials-nav {
         flex-flow: wrap;
+        margin-left: auto;
         justify-content: space-around;
-        @include breakpoints.use-brakepoint('small') {
+        @include bp.use-brakepoint('small') {
             flex-flow: row;
         }
-        @include breakpoints.use-brakepoint('large') {
+        @include bp.use-brakepoint('large') {
             justify-content: flex-start;
         }
     }
-    @include breakpoints.use-brakepoint('medium') {
-        width: auto;
+
+    &.internal-nav {
+        border-bottom: 1px solid theme.get-theme-color('background-accent');
+        flex-flow: row;
+        justify-content: space-between;
+
+        @include bp.use-brakepoint('medium') {
+            border-bottom: none;
+        }
+    }
+}
+.navbar-item {
+    color: theme.get-theme-color('text-secondary');
+    margin: 0.5rem 0.5rem;
+}
+
+.date {
+    background-color: theme.get-theme-color('background-accent');
+    padding: 0 0.5rem;
+
+    @include bp.use-brakepoint('medium') {
+        // width: 100%;
+        text-align: center;
+        display: block;
     }
 }

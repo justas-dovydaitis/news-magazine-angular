@@ -18,6 +18,7 @@ import { FileComponent } from './components/inputs/file/file.component';
 import { HomeComponent } from './views/home/home.component';
 import { CreatePostComponent } from './views/create-post/create-post.component';
 import { SecondaryNavbarComponent } from './components/navbars/secondary-navbar/secondary-navbar.component';
+import { SearchRoundedComponent } from './components/inputs/search-rounded/search-rounded.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { SecondaryNavbarComponent } from './components/navbars/secondary-navbar/
     FileComponent,
     HomeComponent,
     CreatePostComponent,
-    SecondaryNavbarComponent
+    SecondaryNavbarComponent,
+    SearchRoundedComponent
   ],
   imports: [
     BrowserModule,

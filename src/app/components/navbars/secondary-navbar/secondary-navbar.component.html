@@ -1,19 +1,8 @@
-<div class="navigation-bar bottom-bar">
-    <label for="menu-toggler" class="show-menu navigation-bar-item">
-          <div class="icon icon-bars-light"></div>
-      </label>
-    <input type="checkbox" id="menu-toggler" />
-    <div>
-        <input class="px-3" type="search" placeholder="Search..." />
-        <div class="icon icon-search-dark"></div>
-    </div>
-    <nav>
-        <a class="navigation-bar-item active" href="./">Home</a>
-        <a class="navigation-bar-item" href="./life">Life</a>
-        <a class="navigation-bar-item" href="javascript:void(0);">Vintage</a>
-        <a class="navigation-bar-item" href="javascript:void(0);">Latest</a>
-        <a class="navigation-bar-item" href="javascript:void(0);">Travel</a>
-        <a class="navigation-bar-item" href="javascript:void(0);">Design</a>
-    </nav>
-
+<button class="button-expand">expandShit</button>
+<div class="navbar-items-container-right">
+    <app-search-rounded></app-search-rounded>
 </div>
+<nav class="navbar-items-container-collapsable navbar-items-container-collapsable-expanded">
+    <a class="navbar-item" *ngFor="let item of navItems;" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact:   true}" routerLink="{{item.to}}">{{item.name}}</a>
+</nav>
