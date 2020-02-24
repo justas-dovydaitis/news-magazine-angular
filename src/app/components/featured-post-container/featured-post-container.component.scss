@@ -1,0 +1,8 @@
+@use 'spacing';
+
+:host {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: flex-start;
+    @include spacing.margin-y(1);
+}

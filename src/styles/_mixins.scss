@@ -1,0 +1,29 @@
+@mixin lighten-post-image-on-hover {
+    img {
+        opacity: 1;
+        transition: opacity linear 0.2s;
+    }
+    &:hover {
+        img {
+            opacity: 0.9;
+        }
+    }
+    @supports (filter: brightness(0.9)) {
+        img {
+            opacity: 1;
+            filter: brightness(0.9);
+            transition: filter linear 0.2s;
+        }
+        &:hover {
+            img {
+                filter: brightness(1);
+            }
+        }
+    }
+}
+@mixin truncate-text {
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

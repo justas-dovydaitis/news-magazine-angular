@@ -1,0 +1,10 @@
+@use 'spacing';
+:host {
+    @include spacing.padding-x(3);
+    display: block;
+}
+.container {
+    display: flex;
+    flex-flow: wrap;
+    width: 100%;
+}

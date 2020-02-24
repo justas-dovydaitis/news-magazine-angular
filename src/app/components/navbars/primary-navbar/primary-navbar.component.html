@@ -1,11 +1,12 @@
 <nav class='navbar-items-container internal-nav'>
-    <a *ngFor="let item of navLinksInternal;" class="navbar-item" routerLink="/{{item.to}}">
+    <a *ngFor="let item of navLinksInternal;" class="navbar-item" routerLink="/{{item.url}}">
         {{item.name}}
     </a>
 </nav>
 <div class='navbar-items-container socials-nav'>
-    <a *ngFor="let item of navLinksExternal;" class="navbar-item" href="{{item.to}}:void(0);">
-        <div title="{{item.icon}}" class="icon icon-{{item.icon}}-light icon-{{item.icon}}-hover-accent"></div>
+    <a *ngFor="let item of navLinksExternal;" class="navbar-item" routerLink="{{item.url}}">
+        <div title="{{item.name}}" class="icon icon-{{item.iconClass}}-light icon-{{item.iconClass}}-hover-accent">
+        </div>
     </a>
     <time class="navbar-item bg-accent date">
         {{currentDate | date:'fullDate'}}

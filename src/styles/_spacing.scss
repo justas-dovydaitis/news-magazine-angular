@@ -1,0 +1,53 @@
+@use 'variables';
+
+@function calculate-space($size) {
+    $space-step: variables.$max-spacing-size / 5;
+    @return $space-step * $size;
+}
+@mixin padding($size) {
+    @if $size > 5 {
+        @warn 'Max padding and margin size is 5';
+    }
+    padding: calculate-space($size);
+}
+@mixin padding-x($size) {
+    @if $size > 5 {
+        @warn 'Max padding and margin size is 5';
+    }
+    padding-left: calculate-space($size);
+    padding-right: calculate-space($size);
+}
+
+@mixin padding-y($size) {
+    @if $size > 5 {
+        @warn 'Max padding and margin size is 5';
+    }
+    padding-top: calculate-space($size);
+    padding-bottom: calculate-space($size);
+}
+@mixin margin-x($size) {
+    @if $size > 5 {
+        @warn 'Max padding and margin size is 5';
+    }
+    margin-left: calculate-space($size);
+    margin-right: calculate-space($size);
+}
+@mixin margin-left($size) {
+    @if $size > 5 {
+        @warn 'Max padding and margin size is 5';
+    }
+    margin-left: calculate-space($size);
+}
+@mixin margin-right($size) {
+    @if $size > 5 {
+        @warn 'Max padding and margin size is 5';
+    }
+    margin-right: calculate-space($size);
+}
+@mixin margin-y($size) {
+    @if $size > 5 {
+        @warn 'Max padding and margin size is 5';
+    }
+    margin-top: calculate-space($size);
+    margin-bottom: calculate-space($size);
+}

@@ -28,3 +28,35 @@ a {
         text-decoration: underline;
     }
 }
+hr.divider {
+    line-height: 1.5rem;
+    position: relative;
+    outline: 0;
+    border: 0;
+    color: #000000;
+    text-align: center;
+    height: 1.5em;
+    opacity: 1;
+}
+
+hr.divider:before {
+    content: '';
+    background: #000000;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+}
+
+hr.divider:after {
+    content: attr(data-content);
+    position: relative;
+    display: inline-block;
+    color: #000000;
+    padding: 0 3rem;
+    line-height: 1.5rem;
+    background-color: #ffffff;
+    font-size: 1.5em;
+    font-weight: 900;
+}

@@ -1,0 +1,28 @@
+@use 'breakpoints' as bp;
+@use 'spacing';
+:host {
+    @include bp.use-brakepoint('large') {
+        width: 65%;
+    }
+}
+.container {
+    display: flex;
+    flex-flow: wrap;
+    width: 100%;
+}
+.post-controls {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+
+    & a {
+        background-color: #ff4500;
+        text-decoration: none;
+        color: #ffffff;
+
+        @include spacing.padding(0.5);
+        &:hover {
+            background-color: #000000;
+        }
+    }
+}

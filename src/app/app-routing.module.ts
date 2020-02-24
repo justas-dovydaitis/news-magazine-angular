@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './views/home/home.component';
+import { PostsViewComponent } from './views/posts-view/posts-view.component';
 import { CreatePostComponent } from './views/create-post/create-post.component';
 
 
 const routes: Routes = [{
     path: '',
-    component: HomeComponent,
     pathMatch: 'full',
+    component: PostsViewComponent,
     data: {
         title: 'Home'
     }
 }, {
     path: 'life',
-    component: HomeComponent,
+    component: PostsViewComponent,
     data: {
         title: 'Life'
     },

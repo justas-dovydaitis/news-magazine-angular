@@ -1,0 +1,246 @@
+:host {
+    display: flex;
+    flex-flow: wrap;
+    overflow: hidden;
+}
+
+:host figure {
+    margin: 0;
+    position: relative;
+    width: 100%;
+}
+
+:host a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+:host figure,
+:host figure img,
+:host > .details {
+    width: 100%;
+}
+
+:host figure img {
+    opacity: 0.9;
+    transition: opacity linear 0.2s;
+}
+
+:host:hover figure img {
+    opacity: 1;
+}
+
+@supports (filter: brightness(0.9)) {
+    :host figure img {
+        opacity: 1;
+        filter: brightness(0.9);
+        transition: filter linear 0.2s;
+    }
+    :host:hover figure img {
+        filter: brightness(1);
+    }
+}
+
+:host.new figure::after {
+    top: 0;
+    left: 0;
+    content: 'New';
+    position: absolute;
+    background-color: #ff4500;
+    padding: 0.5rem;
+    text-transform: uppercase;
+    color: white;
+}
+
+:host .details .tags {
+    display: flex;
+    flex-flow: wrap;
+    align-items: center;
+    color: #ffffff;
+    height: 2rem;
+}
+
+:host .details .tags a {
+    background-color: #ff4500;
+    height: min-content;
+    margin: 0.1rem;
+    padding: 0.2rem;
+    font-size: 1rem;
+    transition: font-size ease 0.2s;
+}
+
+:host .details .tags a:hover {
+    font-size: 1.1rem;
+}
+
+:host .details a {
+    text-decoration: none;
+}
+
+:host .details h3,
+:host .details p {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+:host .details h3 {
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+:host .details span {
+    font-size: 0.9rem;
+}
+
+@media only screen and (min-width: 578px) {
+    :host {
+        flex-flow: wrap;
+    }
+    :host figure,
+    :host > .details {
+        width: 100%;
+    }
+}
+
+:host .details {
+    position: relative;
+    margin-top: -3rem;
+}
+
+:host > figure {
+    width: 100%;
+}
+
+:host .details a > h3 {
+    color: #000000;
+}
+
+.post-controls {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.post-controls > a {
+    background-color: #ff4500;
+    padding: 0.5rem;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.post-controls > a:hover {
+    background-color: #000000;
+}
+
+:host .details > p {
+    max-height: 6rem;
+    overflow: hidden;
+    position: relative;
+}
+
+:host .details > p::after {
+    content: '';
+    text-align: right;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0) 100%);
+}
+
+@supports (-webkit-line-clamp: 8) {
+    :host .details > p {
+        max-height: none;
+        display: -webkit-box;
+        -webkit-line-clamp: 8;
+        -webkit-box-orient: vertical;
+    }
+    :host .details > p:after {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 578px) {
+    :host .details {
+        position: static;
+        margin-top: 0;
+    }
+    :host .details .tags {
+        margin-left: 0;
+    }
+    .details {
+        padding-left: 1rem;
+    }
+    :host figure {
+        width: 10rem;
+        height: auto;
+    }
+    .details {
+        width: calc(100% - 10rem);
+    }
+    :host figure {
+        width: 8rem;
+        height: auto;
+    }
+    .details {
+        width: calc(100% - 8rem);
+    }
+    :host .details > p {
+        max-height: 3.1rem;
+        overflow: hidden;
+        position: relative;
+    }
+    @supports (display: -webkit-box) {
+        :host .details > p {
+            max-height: none;
+            -webkit-line-clamp: 3;
+        }
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    :host figure {
+        width: 10rem;
+        height: auto;
+    }
+    .details {
+        width: calc(100% - 10rem);
+    }
+    :host figure {
+        width: 6rem;
+        height: auto;
+    }
+    .details {
+        width: calc(100% - 6rem);
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    :host figure {
+        width: 15rem;
+        height: auto;
+    }
+    .details {
+        width: calc(100% - 15rem);
+    }
+    :host figure {
+        width: 10rem;
+        height: auto;
+    }
+    .details {
+        width: calc(100% - 10rem);
+    }
+    :host .details > p {
+        max-height: 8rem;
+        position: relative;
+    }
+    @supports (display: -webkit-box) {
+        :host .details > p {
+            max-height: none;
+            -webkit-line-clamp: 7;
+        }
+    }
+}

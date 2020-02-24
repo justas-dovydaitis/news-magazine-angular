@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavLink } from '../../../models/NavLink';
 
 @Component({
     selector: 'app-secondary-navbar',
@@ -7,25 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SecondaryNavbarComponent implements OnInit {
 
-    navItems: Array<{ name: string, to: string }> = [{
-        name: 'Home',
-        to: '/'
-    }, {
-        name: 'Life',
-        to: '/life',
-    }, {
-        name: 'Vintage',
-        to: '/vintage'
-    }, {
-        name: 'Latest',
-        to: '/latest',
-    }, {
-        name: 'Travel',
-        to: '/travel',
-    }, {
-        name: 'Design',
-        to: '/design',
-    }]
+    navItems: NavLink[] = [
+        new NavLink('Home', '/'),
+        new NavLink('Life', '/life'),
+        new NavLink('Vintage', '/vintage'),
+        new NavLink('Latest', '/latest'),
+        new NavLink('Travel', '/travel'),
+        new NavLink('Design', '/design')
+    ];
     constructor() { }
 
     ngOnInit(): void {
