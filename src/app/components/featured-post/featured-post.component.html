@@ -1,18 +1,14 @@
 <figure>
-    <img src="https://via.placeholder.com/300/444444?text=News+Magazine" alt="image placeholder" title="placeholder" />
+    <img src="{{imageUrl}}" alt="{{imageAlt}}" title="{{imageTitle}}" />
 </figure>
 <div class="details">
     <div class="tags">
-        <a href="javascript:void(0)">
-            Life
-        </a>
-        <a href="javascript:void(0)">
-            Travel
+        <a *ngFor="let category of categories;" routerLink="/{{category.name.toLowerCase()}}">
+            {{category.name}}
         </a>
     </div>
-    <a href="javascript:void(0)">
-        <h3 title="Conveniently formulate enterprise initiatives for multidisciplinary innovation.">Conveniently
-            formulate enterprise initiatives for multidisciplinary innovation.</h3>
+    <a href="/edit-post/{{_id}}">
+        <h3 title="{{title}}">{{title}}</h3>
     </a>
-    <span>1 month ago</span>
+    <span>{{created | timeAgo}}</span>
 </div>

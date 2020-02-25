@@ -1,7 +1,7 @@
 <hr class="divider" data-content="POSTS">
 <div class="post-controls py-2">
-    <a class="btn-add-post" href="../edit-post">Add post</a>
+    <a class="btn-add-post" routerLink="/create-post">Add post</a>
 </div>
-<app-post></app-post>
-<app-post></app-post>
-<app-post></app-post>
+<app-post *ngFor="let post of posts;" [title]="post.title" [content]="post.content" [categories]="post.categories"
+    [created]="post.created" [_id]="post._id" [imageUrl]="post.imageUrl" [imageAlt]="post.imageAlt"
+    [imageTitle]="post.imageTitle"></app-post>

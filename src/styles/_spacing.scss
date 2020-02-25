@@ -10,6 +10,12 @@
     }
     padding: calculate-space($size);
 }
+@mixin padding-left($size) {
+    @if $size > 5 {
+        @warn 'Max padding and margin size is 5';
+    }
+    padding-left: calculate-space($size);
+}
 @mixin padding-x($size) {
     @if $size > 5 {
         @warn 'Max padding and margin size is 5';

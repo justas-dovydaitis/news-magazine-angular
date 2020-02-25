@@ -20,10 +20,10 @@ export class PrimaryNavbarComponent implements OnInit {
         new NavLink('Fashion', '/fashion')
     ];
     navLinksExternal: SocialLink[] = [
-        new SocialLink('Facebook', 'fb.com', 'facebook'),
-        new SocialLink('Pinterest', 'pinterest.com', 'pinterest'),
-        new SocialLink('Twitter', 'twitter.com', 'twitter'),
-        new SocialLink('Youtube', 'youtube.com', 'youtube')
+        new SocialLink('Facebook', 'https://fb.com', 'facebook'),
+        new SocialLink('Pinterest', 'https://pinterest.com', 'pinterest'),
+        new SocialLink('Twitter', 'https://twitter.com', 'twitter'),
+        new SocialLink('Youtube', 'https://youtube.com', 'youtube')
     ];
     constructor() { }
 

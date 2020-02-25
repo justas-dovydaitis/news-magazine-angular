@@ -23,6 +23,7 @@ import { PostsViewComponent } from './views/posts-view/posts-view.component';
 import { FeaturedPostContainerComponent } from './components/featured-post-container/featured-post-container.component';
 import { LatestPostContainerComponent } from './components/latest-post-container/latest-post-container.component';
 import { PostContainerComponent } from './components/post-container/post-container.component';
+import { TimeAgoPipe } from './pipes/time-ago.pipe';
 
 @NgModule({
     declarations: [
@@ -44,6 +45,7 @@ import { PostContainerComponent } from './components/post-container/post-contain
         FeaturedPostContainerComponent,
         LatestPostContainerComponent,
         PostContainerComponent,
+        TimeAgoPipe,
     ],
     imports: [
         BrowserModule,

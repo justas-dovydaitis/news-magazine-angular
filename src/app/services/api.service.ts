@@ -12,7 +12,7 @@ export interface IApiService {
     getOne(id: string): Observable<any>;
     update(id: string, data: any): Observable<any>;
     delete(id: string): Observable<any>;
-    getList(): Observable<any>;
+    getList(searchQuery: string): Observable<any>;
 }
 @Injectable({
     providedIn: 'root'
@@ -64,8 +64,8 @@ export class ApiService<T> implements IApiService {
                 catchError(this.handleError)
             );
     }
-    public getList(): Observable<T[]> {
-        let url = `${this.baseUrl}${this.resource}`;
+    public getList(searchQuery: string): Observable<T[]> {
+        let url = `${this.baseUrl}${this.resource}?${searchQuery}`;
         return this.http.get<T[]>(url, this.httpOptions)
             .pipe(
                 retry(1),

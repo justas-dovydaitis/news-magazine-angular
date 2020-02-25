@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PostsService } from 'src/app/services/posts.service';
 import { Router } from '@angular/router';
 import { Post } from 'src/app/models/post';
@@ -20,10 +20,10 @@ export class FeaturedPostContainerComponent implements OnInit {
 
     ngOnInit(): void {
 
-        this.service.getList().subscribe(
+        this.service.getList('type=featured&limit=4').subscribe(
             response => {
                 this.posts = response;
-                console.log(response);
+                console.log('Featured posts', this.posts)
             },
             err => {
                 console.group('Featured posts init');

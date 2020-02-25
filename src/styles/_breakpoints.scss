@@ -13,7 +13,7 @@ $breakpoints: (
     )
 ) !default;
 
-@mixin use-brakepoint($breakpoint) {
+@mixin use-breakpoint($breakpoint) {
     @if map-has-key($breakpoints, $breakpoint) {
         @media #{inspect(map-get($breakpoints , $breakpoint ))} {
             @content;

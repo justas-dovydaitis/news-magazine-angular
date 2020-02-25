@@ -1,0 +1,10 @@
+@use 'breakpoints' as bp;
+:host {
+    width: 100%;
+    overflow-x: hidden;
+    display: block;
+    @include bp.use-breakpoint('large') {
+        width: 35%;
+        padding-left: 1rem;
+    }
+}

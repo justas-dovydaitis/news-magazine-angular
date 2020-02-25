@@ -4,7 +4,7 @@
     </a>
 </nav>
 <div class='navbar-items-container socials-nav'>
-    <a *ngFor="let item of navLinksExternal;" class="navbar-item" routerLink="{{item.url}}">
+    <a *ngFor="let item of navLinksExternal;" class="navbar-item" href="{{item.url}}">
         <div title="{{item.name}}" class="icon icon-{{item.iconClass}}-light icon-{{item.iconClass}}-hover-accent">
         </div>
     </a>

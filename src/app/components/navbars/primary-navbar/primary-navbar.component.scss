@@ -11,24 +11,24 @@
     top: 0;
     position: sticky;
 
-    @include bp.use-brakepoint('medium') {
+    @include bp.use-breakpoint('medium') {
         flex-flow: row;
     }
 }
 .navbar-items-container {
     display: flex;
 
-    @include bp.use-brakepoint('medium') {
+    @include bp.use-breakpoint('medium') {
         width: auto;
     }
     &.socials-nav {
         flex-flow: wrap;
         margin-left: auto;
         justify-content: space-around;
-        @include bp.use-brakepoint('small') {
+        @include bp.use-breakpoint('small') {
             flex-flow: row;
         }
-        @include bp.use-brakepoint('large') {
+        @include bp.use-breakpoint('large') {
             justify-content: flex-start;
         }
     }
@@ -38,7 +38,7 @@
         flex-flow: row;
         justify-content: space-between;
 
-        @include bp.use-brakepoint('medium') {
+        @include bp.use-breakpoint('medium') {
             border-bottom: none;
         }
     }
@@ -52,7 +52,7 @@
     background-color: theme.get-theme-color('background-accent');
     padding: 0 0.5rem;
 
-    @include bp.use-brakepoint('medium') {
+    @include bp.use-breakpoint('medium') {
         // width: 100%;
         text-align: center;
         display: block;

@@ -11,16 +11,18 @@
     @include spacing.margin-y(1);
     @include mixins.lighten-post-image-on-hover;
 
-    @include bp.use-brakepoint('medium') {
+    @include bp.use-breakpoint('medium') {
         width: calc(50% - #{spacing.calculate-space(1)});
         &:nth-of-type(odd) {
+            @include spacing.margin-right(1);
             margin-left: 0;
         }
         &:nth-of-type(even) {
+            @include spacing.margin-left(1);
             margin-right: 0;
         }
     }
-    @include bp.use-brakepoint('large') {
+    @include bp.use-breakpoint('large') {
         width: calc(25% - #{spacing.calculate-space(1.5)});
 
         &:nth-of-type(odd),
@@ -53,7 +55,7 @@
     position: relative;
     margin: 0;
 
-    @include bp.use-brakepoint('small') {
+    @include bp.use-breakpoint('small') {
         width: 100%;
     }
 }

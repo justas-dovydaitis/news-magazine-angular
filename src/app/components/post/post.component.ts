@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { Post } from 'src/app/models/Post';
 
 @Component({
-  selector: 'app-post',
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.scss']
+    selector: 'app-post',
+    templateUrl: './post.component.html',
+    styleUrls: ['./post.component.scss']
 })
-export class PostComponent implements OnInit {
+export class PostComponent extends Post implements OnInit {
 
-  constructor() { }
+    constructor() { super() }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    }
 
 }
