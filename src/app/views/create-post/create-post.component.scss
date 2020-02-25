@@ -1,0 +1,49 @@
+form {
+    max-width: 40rem;
+    margin: 0 auto;
+}
+
+form input,
+form label {
+    display: block;
+}
+
+form div[class^='form-group'] {
+    margin-bottom: 1.5rem;
+}
+
+form .form-group--inline > * {
+    display: inline-block;
+    min-height: 0;
+}
+
+form .form-group input {
+    width: 100%;
+}
+
+form label {
+    margin-bottom: 0.7rem;
+}
+
+form .form-group.required label:after {
+    content: '*';
+}
+
+form input:focus,
+form textarea:focus {
+    border-color: #ff4500;
+    outline: none;
+}
+
+form input,
+form textarea {
+    border: 1px solid #000000;
+    min-height: 2rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+form textarea {
+    resize: none;
+    width: 100%;
+}

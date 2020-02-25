@@ -9,8 +9,8 @@ export interface IPost {
     imageUrl: string;
     imageAlt: string;
     imageTitle: string;
-    created: Date;
-    lastUpdated: Date;
+    created: string;
+    lastUpdated: string;
     featured: boolean;
     categories: Category[];
 }
@@ -22,8 +22,8 @@ export class Post implements IPost {
     @Input() imageUrl: string;
     @Input() imageAlt: string;
     @Input() imageTitle: string;
-    @Input() created: Date;
-    @Input() lastUpdated: Date;
+    @Input() created: string;
+    @Input() lastUpdated: string;
     @Input() featured: boolean;
     @Input() categories: Category[];
 

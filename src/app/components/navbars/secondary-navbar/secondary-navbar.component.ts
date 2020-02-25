@@ -7,7 +7,7 @@ import { NavLink } from '../../../models/NavLink';
     styleUrls: ['./secondary-navbar.component.scss']
 })
 export class SecondaryNavbarComponent implements OnInit {
-
+    navExpanded = false;
     navItems: NavLink[] = [
         new NavLink('Home', '/'),
         new NavLink('Life', '/life'),
@@ -19,6 +19,9 @@ export class SecondaryNavbarComponent implements OnInit {
     constructor() { }
 
     ngOnInit(): void {
+    }
+    toggleMenu(value: boolean): void {
+        this.navExpanded = value;
     }
 
 }

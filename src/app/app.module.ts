@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,7 +13,6 @@ import { LatestPostComponent } from './components/latest-post/latest-post.compon
 import { PrimaryNavbarComponent } from './components/navbars/primary-navbar/primary-navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
-import { PostFormComponent } from './components/post-form/post-form.component';
 import { SelectComponent } from './components/inputs/select/select.component';
 import { TextareaComponent } from './components/inputs/textarea/textarea.component';
 import { FileComponent } from './components/inputs/file/file.component';
@@ -34,7 +34,6 @@ import { TimeAgoPipe } from './pipes/time-ago.pipe';
         PrimaryNavbarComponent,
         FooterComponent,
         HeaderComponent,
-        PostFormComponent,
         SelectComponent,
         TextareaComponent,
         FileComponent,
@@ -46,6 +45,7 @@ import { TimeAgoPipe } from './pipes/time-ago.pipe';
         LatestPostContainerComponent,
         PostContainerComponent,
         TimeAgoPipe,
+        ReactiveFormsModule
     ],
     imports: [
         BrowserModule,

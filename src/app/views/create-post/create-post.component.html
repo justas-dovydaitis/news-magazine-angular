@@ -1,1 +1,38 @@
-<p>create-post works!</p>
+<form [formGroup]="postForm" (ngSubmit)="savePost()">
+    <h2 id="form-header">Add new post</h2>
+    <div class="form-group required">
+        <label for="title">Title</label>
+        <input formControlName="title" id="title" name="title" type="text" placeholder="Title" required />
+    </div>
+    <div class="form-group required">
+        <label for="content">Content</label>
+        <app-textarea formControlName="content"></app-textarea>
+    </div>
+    <div class="form-group required">
+        <label for="image">Image</label>
+        <app-file formControlName="image"></app-file>
+    </div>
+    <div class="form-group required">
+        <label for="imageTitle">Image title</label>
+        <input formControlName="imageTitle" id="imageTitle" name='imageTitle' type="text" required />
+    </div>
+
+    <div class="form-group required">
+        <label for="imageAlt">Image alternative text</label>
+        <input formControlName="imageAlt" id="imageAlt" name='imageAlt' type="text" required />
+    </div>
+
+    <div class="form-group required">
+        <app-select formControlName="categories"></app-select>
+    </div>
+    <div class="form-group--inline">
+        <input formControlName="featured" id="featured" name='featured' type="checkbox" />
+        <label for="featured">Add this post to featured section</label>
+
+    </div>
+    <div>
+        <button id="submitButton" name="submit" type="submit">Save</button>
+        <button id="deleteButton" hidden name="delete" type="delete" disabled>Delete</button>
+        <button id="saveButton" type="reset" onclick="deletePost">Cancel</button>
+    </div>
+</form>

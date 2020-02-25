@@ -7,7 +7,7 @@
             {{category.name}}
         </a>
     </div>
-    <a href="/edit-post/{{_id}}">
+    <a [routerLink]="['/edit-post/', _id]">
         <h3 title="{{title}}">{{title}}</h3>
     </a>
     <span>{{created | timeAgo}}</span>

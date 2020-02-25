@@ -1,8 +1,9 @@
-<button class="button-expand">expandShit</button>
+<button class="button-expand" (click)="toggleMenu(!navExpanded)">expandShit</button>
 <div class="navbar-items-container-right">
     <app-search-rounded></app-search-rounded>
 </div>
-<nav class="navbar-items-container-collapsable navbar-items-container-collapsable-expanded">
-    <a class="navbar-item" *ngFor="let item of navItems;" routerLinkActive="active"
-        [routerLinkActiveOptions]="{exact: true}" routerLink="{{item.url}}">{{item.name}}</a>
+<nav class="navbar-items-container-collapsable "
+    [className]="{'navbar-items-container-collapsable-expanded': navExpanded}">
+    <a class="navbar-item" *ngFor="let item of navItems;" routerLinkActive="active" (click)="toggleMenu(false)"
+        [routerLinkActiveOptions]=" {exact: true}" routerLink="{{item.url}}">{{item.name}}</a>
 </nav>

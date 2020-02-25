@@ -1,12 +1,14 @@
-@use '../../../../styles/breakpoints';
+@use 'spacing';
 :host {
     display: block;
+    @include spacing.margin-y(1);
 }
 input {
     border-radius: 0.8rem;
     border: 0;
     height: 100%;
     width: 100%;
+    @include spacing.padding-x(1);
     + .icon {
         display: inline-block;
         position: relative;
