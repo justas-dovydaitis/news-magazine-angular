@@ -1,4 +1,2 @@
 <h3>LATEST POSTS</h3>
-<app-latest-post *ngFor="let post of posts;" [title]="post.title" [content]="post.content"
-    [categories]="post.categories" [created]="post.created" [_id]="post._id" [imageUrl]="post.imageUrl"
-    [imageAlt]="post.imageAlt" [imageTitle]="post.imageTitle"></app-latest-post>
+<app-latest-post *ngFor="let post of posts;" [post]="post"></app-latest-post>

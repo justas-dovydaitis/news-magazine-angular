@@ -1,14 +1,14 @@
-<a [routerLink]="['/edit-post/', _id]">
+<a [routerLink]="['/edit-post/', post._id]">
     <figure>
-        <img src="{{imageUrl}}" alt="{{imageAlt}}" title="{{imageTitle}}" />
+        <img src="{{post.imageUrl}}" alt="{{post.imageAlt}}" title="{{post.imageTitle}}" />
     </figure>
 </a>
 <article class="details">
     <div class="tags">
-        <a *ngFor="let category of categories" routerLink="/{{category.name.toLowerCase()}}">{{category.name}}</a>
+        <a *ngFor="let category of post.categories" routerLink="/{{category.name.toLowerCase()}}">{{category.name}}</a>
     </div>
-    <a [routerLink]="['/edit-post/', _id]">
-        <h3 title="{{title}}">{{title}}</h3>
+    <a [routerLink]="['/edit-post/', post._id]">
+        <h3 title="{{post.title}}">{{post.title}}</h3>
     </a>
-    <p>{{content}} </p>
+    <p>{{post.content}} </p>
 </article>

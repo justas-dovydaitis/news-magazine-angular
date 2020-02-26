@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostsService } from 'src/app/services/posts.service';
-import { Post } from 'src/app/models/Post';
+import { IPost } from 'src/app/models/Post';
 
 @Component({
     selector: 'app-latest-post-container',
@@ -9,7 +9,7 @@ import { Post } from 'src/app/models/Post';
 })
 export class LatestPostContainerComponent implements OnInit {
     private service: PostsService;
-    public posts: Post[];
+    public posts: IPost[];
 
     constructor(service: PostsService) {
         this.service = service;

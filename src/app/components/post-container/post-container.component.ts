@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Post } from 'src/app/models/Post';
-import { Category } from 'src/app/models/Category';
+import { IPost } from 'src/app/models/Post';
+import { ICategory } from 'src/app/models/Category';
 import { PostsService } from 'src/app/services/posts.service';
 
 @Component({
@@ -10,12 +10,9 @@ import { PostsService } from 'src/app/services/posts.service';
 })
 export class PostContainerComponent implements OnInit {
 
-    private service: PostsService;
-    public posts: Post[];
+    public posts: IPost[];
 
-    constructor(service: PostsService) {
-        this.service = service;
-    }
+    constructor(private service: PostsService) { }
     ngOnInit(): void {
 
         this.service.getList('limit=10').subscribe(

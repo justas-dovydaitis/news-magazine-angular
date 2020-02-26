@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PostsService } from 'src/app/services/posts.service';
 import { Router } from '@angular/router';
-import { Post } from 'src/app/models/post';
+import { IPost } from 'src/app/models/post';
 
 @Component({
     selector: 'app-featured-post-container',
@@ -11,7 +11,7 @@ import { Post } from 'src/app/models/post';
 export class FeaturedPostContainerComponent implements OnInit {
     private service: PostsService;
     private router: Router;
-    public posts: Post[];
+    public posts: IPost[];
 
     constructor(service: PostsService, router: Router) {
         this.service = service;

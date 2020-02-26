@@ -1,4 +1,1 @@
-<app-featured-post *ngFor="let post of posts;" [title]="post.title" [categories]="post.categories"
-    [created]="post.created" [_id]="post._id" [imageUrl]="post.imageUrl" [imageAlt]="post.imageAlt"
-    [imageTitle]="post.imageTitle">
-</app-featured-post>
+<app-featured-post *ngFor="let post of posts;" [post]="post"></app-featured-post>
