@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { PostsService } from 'src/app/services/posts.service';
 import { ActivatedRoute } from '@angular/router';
@@ -42,8 +42,7 @@ export class CreatePostComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.title.setValue('asd');
-        this.content.setValue('bbs')
+
     }
     loadPost(): void {
         this.postsService.getOne(this.postId).subscribe(

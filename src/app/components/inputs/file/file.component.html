@@ -1,5 +1,6 @@
 <div class="file-area">
-    <input #input type="file" name="image" id="image" accept="image/x-png,image/gif,image/jpeg" required />
+    <input #input type="file" name="image" id="image" (change)="onInput($event)"
+        accept="image/x-png,image/gif,image/jpeg" required />
     <div class="file-dummy">
         <figure #figure class="preview-image">
             <img #preview />
