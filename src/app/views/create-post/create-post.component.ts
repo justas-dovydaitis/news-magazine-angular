@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { PostsService } from 'src/app/services/posts.service';
 import { ActivatedRoute } from '@angular/router';
@@ -10,22 +10,30 @@ import { Post } from 'src/app/models/post';
     styleUrls: ['./create-post.component.scss']
 })
 export class CreatePostComponent implements OnInit {
-    postForm = new FormGroup({
-        title: new FormControl(''),
-        content: new FormControl(''),
-        image: new FormControl(''),
-        imageTitle: new FormControl(''),
-        imageAlt: new FormControl(''),
-        categories: new FormControl([]),
-        featured: new FormControl(false)
-    });
-
-
     private postsService: PostsService;
     private activatedRoute: ActivatedRoute;
+
     protected postId: string;
     protected post: Post;
     protected edit = false;
+
+    protected title = new FormControl('');
+    protected content = new FormControl('');
+    protected image = new FormControl('');
+    protected imageTitle = new FormControl('');
+    protected imageAlt = new FormControl('');
+    protected categories = new FormControl([]);
+    protected featured = new FormControl(false);
+    postForm = new FormGroup({
+        title: this.title,
+        content: this.content,
+        image: this.image,
+        imageTitle: this.imageTitle,
+        imageAlt: this.imageAlt,
+        categories: this.categories,
+        featured: this.featured
+    });
+
 
     constructor(postsService: PostsService, activatedRoute: ActivatedRoute) {
         this.postsService = postsService;
@@ -34,6 +42,10 @@ export class CreatePostComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.title.setValue('asd');
+        this.content.setValue('bbs')
+    }
+    loadPost(): void {
         this.postsService.getOne(this.postId).subscribe(
             response => {
                 this.post = response;

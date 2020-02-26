@@ -6,13 +6,13 @@
     </div>
     <div class="form-group required">
         <label for="content">Content</label>
-        <app-textarea formControlName="content"></app-textarea>
+        <app-textarea id="content" formControlName="content"></app-textarea>
     </div>
     <div class="form-group required">
         <label for="image">Image</label>
-        <app-file formControlName="image"></app-file>
+        <app-file id="image" formControlName="image"></app-file>
     </div>
-    <div class="form-group required">
+    <!--<div class="form-group required">
         <label for="imageTitle">Image title</label>
         <input formControlName="imageTitle" id="imageTitle" name='imageTitle' type="text" required />
     </div>
@@ -29,7 +29,7 @@
         <input formControlName="featured" id="featured" name='featured' type="checkbox" />
         <label for="featured">Add this post to featured section</label>
 
-    </div>
+    </div> -->
     <div>
         <button id="submitButton" name="submit" type="submit">Save</button>
         <button id="deleteButton" hidden name="delete" type="delete" disabled>Delete</button>

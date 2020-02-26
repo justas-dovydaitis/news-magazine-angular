@@ -1,1 +1,3 @@
-<textarea id="content" name="content" placeholder="Content text" required></textarea>
+<textarea #txt name="content" placeholder="Content text" (input)="resizeArea($event)"
+    [ngStyle]="{'line-height.px': lineHeight, 'height.px': currentHeight}" [value]="value"
+    required="required"></textarea>
