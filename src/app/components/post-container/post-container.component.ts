@@ -15,7 +15,7 @@ export class PostContainerComponent implements OnInit {
     constructor(private service: PostsService) { }
     ngOnInit(): void {
 
-        this.service.getList('limit=10').subscribe(
+        this.service.getList({ limit: '10' }).subscribe(
             response => {
                 this.posts = response;
                 console.log('Basic posts', this.posts)
@@ -24,7 +24,10 @@ export class PostContainerComponent implements OnInit {
                 console.group('Basic posts init');
                 console.warn(`Something went wrong, response status is: ${err.status}.`);
                 console.groupEnd();
-            }
+            },
+            // complete => {
+
+            // }
         )
 
     }

@@ -1,5 +1,5 @@
 <nav class='navbar-items-container internal-nav'>
-    <a *ngFor="let item of navLinksInternal;" class="navbar-item" routerLink="/{{item.url}}">
+    <a *ngFor="let item of navLinksInternal;" class="navbar-item" [routerLink]="[item.url]">
         {{item.name}}
     </a>
 </nav>

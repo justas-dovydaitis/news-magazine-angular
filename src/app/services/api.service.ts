@@ -1,77 +1,63 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
+import { retry, catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
-const { apiRoot } = environment;
-
-
-export interface IApiService {
-    create(data: any): Observable<any>;
-    getOne(id: string): Observable<any>;
-    update(id: string, data: any): Observable<any>;
-    delete(id: string): Observable<any>;
-    getList(searchQuery: string): Observable<any>;
-}
 @Injectable({
     providedIn: 'root'
 })
 
-export class ApiService<T> implements IApiService {
-    protected baseUrl = apiRoot;
-    protected resource = '';
-    protected http: HttpClient;
-    protected httpOptions = {
-        headers: new HttpHeaders({
-            'Content-Type': 'application/json',
-        })
-    };
+export class ApiService {
 
-    constructor(http: HttpClient) {
-        this.http = http;
+    constructor(private http: HttpClient) { }
+
+    get<T>(endpoint: string, params?: any, headers?: any): Observable<T> {
+        const url = this.makeUrl(endpoint, params);
+        let x = this.http.get<T>(url, headers && { headers: new HttpHeaders(headers) })
+            .pipe(
+                catchError(this.handleError)
+            );
+        return x
+    }
+    post<T>(endpoint: string, data: any, headers?: any): Observable<T> {
+        const url = this.makeUrl(endpoint);
+        let x = this.http.post<T>(url, data, headers && { headers: new HttpHeaders(headers) })
+            .pipe(
+                catchError(this.handleError)
+            );
+        return x
+    }
+    update<T>(endpoint: string, data: any, headers?: any): Observable<T> {
+        const url = this.makeUrl(endpoint);
+        let x = this.http.put<T>(url, data, headers && { headers: new HttpHeaders(headers) })
+            .pipe(
+                catchError(this.handleError)
+            );
+        return x
+    }
+    delete<T>(endpoint: string, id: string, headers?: any): Observable<T> {
+        const url = this.makeUrl(`${endpoint}/${id}`);
+        let x = this.http.delete<T>(url, headers && { headers: new HttpHeaders(headers) })
+            .pipe(
+                catchError(this.handleError)
+            );
+        return x
     }
 
-    public create(data: T): Observable<T> {
-        let url = `${this.baseUrl}${this.resource}`;
-        return this.http.post<T>(url, data, this.httpOptions)
-            .pipe(
-                retry(1),
-                catchError(this.handleError)
-            );
+
+    private makeUrl(resource: string, params?: object): string {
+        let url = `${environment.apiRoot}${resource}`;
+        if (params) {
+            url += '?';
+            for (let [key, value] of Object.entries(params)) {
+                url += `${key}=${value}&`;
+            }
+            url = url.slice(0, url.length - 1);
+        }
+        return url;
     }
-    public getOne(id: string): Observable<T> {
-        let url = `${this.baseUrl}${this.resource}${id}`;
-        return this.http.get<T>(url, this.httpOptions)
-            .pipe(
-                retry(1),
-                catchError(this.handleError)
-            );
-    }
-    public update(id: string, data: T): Observable<T> {
-        let url = `${this.baseUrl}${this.resource}${id}`;
-        return this.http.put<T>(url, data, this.httpOptions)
-            .pipe(
-                retry(1),
-                catchError(this.handleError)
-            );
-    }
-    public delete(id: string): Observable<T> {
-        let url = `${this.baseUrl}${this.resource}${id}`;
-        return this.http.delete<T>(url, this.httpOptions)
-            .pipe(
-                retry(1),
-                catchError(this.handleError)
-            );
-    }
-    public getList(searchQuery: string): Observable<T[]> {
-        let url = `${this.baseUrl}${this.resource}?${searchQuery}`;
-        return this.http.get<T[]>(url, this.httpOptions)
-            .pipe(
-                retry(1),
-                catchError(this.handleError)
-            );
-    }
+
     protected handleError(error: HttpErrorResponse): Observable<never> {
         if (error.error instanceof ErrorEvent) {
             console.error('An error occurred:', error.error.message);
@@ -83,4 +69,5 @@ export class ApiService<T> implements IApiService {
         return throwError(
             'Something bad happened; please try again later.');
     };
+
 }

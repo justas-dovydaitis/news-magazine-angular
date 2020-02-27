@@ -15,8 +15,11 @@ export class LatestPostContainerComponent implements OnInit {
         this.service = service;
     }
     ngOnInit(): void {
-
-        this.service.getList('type=latest&limit=10').subscribe(
+        const params = {
+            type: 'latest',
+            limit: 10
+        }
+        this.service.getList(params).subscribe(
             response => {
                 this.posts = response;
                 console.log('Latest posts', this.posts)

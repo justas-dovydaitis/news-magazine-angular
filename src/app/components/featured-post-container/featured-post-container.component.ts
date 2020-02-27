@@ -19,8 +19,11 @@ export class FeaturedPostContainerComponent implements OnInit {
     }
 
     ngOnInit(): void {
-
-        this.service.getList('type=featured&limit=4').subscribe(
+        const params = {
+            type: 'featured',
+            limit: 4
+        }
+        this.service.getList(params).subscribe(
             response => {
                 this.posts = response;
                 console.log('Featured posts', this.posts)

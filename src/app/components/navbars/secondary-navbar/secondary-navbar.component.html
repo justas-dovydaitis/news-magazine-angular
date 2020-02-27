@@ -5,5 +5,5 @@
 <nav class="navbar-items-container-collapsable "
     [className]="{'navbar-items-container-collapsable-expanded': navExpanded}">
     <a class="navbar-item" *ngFor="let item of navItems;" routerLinkActive="active" (click)="toggleMenu(false)"
-        [routerLinkActiveOptions]=" {exact: true}" routerLink="{{item.url}}">{{item.name}}</a>
+        [routerLinkActiveOptions]=" {exact: true}" [routerLink]="item.url">{{item.name}}</a>
 </nav>

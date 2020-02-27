@@ -59,7 +59,7 @@ export class CreatePostComponent implements OnInit {
         }))
     }
     loadCategories(): void {
-        this.categoriesService.getList('').subscribe(
+        this.categoriesService.getList().subscribe(
             response => {
                 this.categories = response;
                 this.options = response.map(item => {
