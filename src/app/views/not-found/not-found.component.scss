@@ -1,0 +1,21 @@
+@use 'fonts';
+@use 'spacing';
+:host {
+    display: flex;
+    width: 100%;
+    flex-flow: column;
+    @include spacing.padding-x(10);
+}
+.title {
+    @include fonts.heading-bold;
+    @include spacing.padding-y(3);
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    &:after {
+        content: '  😢';
+    }
+}
+.text {
+    @include fonts.text-primary;
+}

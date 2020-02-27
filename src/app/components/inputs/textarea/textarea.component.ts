@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef, Input, Output, forwardRef } from '@angular/core';
-import { FormControl, NG_VALUE_ACCESSOR, ControlValueAccessor, FormControlName } from '@angular/forms';
+import { Component, OnInit, ViewChild, ElementRef, Input, forwardRef } from '@angular/core';
+import { FormControl, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 
 @Component({
@@ -15,41 +15,47 @@ import { FormControl, NG_VALUE_ACCESSOR, ControlValueAccessor, FormControlName }
     ]
 })
 export class TextareaComponent implements OnInit, ControlValueAccessor {
-    @ViewChild('txt', { static: true }) textArea: ElementRef;
 
+    @ViewChild('txt', { static: true }) textArea: ElementRef;
+    @Input() formControl: FormControl;
     @Input() required: boolean;
     @Input() minRows = 4;
     @Input() maxRows = 12;
     @Input() lineHeight = 15;
     currentHeight: number;
 
-    @Input('value') _value = '';
-    get value() { return this._value; }
-    set value(val) {
-        if (val) {
+    private _value = '';
+
+    get value() { return this._value }
+    set value(val: any) {
+        if (this._value !== val) {
+            this.textArea.nativeElement.value = val;
             this._value = val;
-            this.propagateChange(this._value);
+            this.onChange(val)
         }
     }
 
-    propagateChange = (_: any) => { };
+    onChange(_: any): void { };
+    onTouched(): void { };
 
-    writeValue(value: string): void {
-        if (value) {
-            this._value = value;
-            this.propagateChange(this.value);
+    writeValue(val: any): void {
+        if (this._value !== val) {
+            this.textArea.nativeElement.value = val;
+            this._value = val;
         }
-    }
 
-    registerOnChange(fn: any) {
-        this.propagateChange = fn;
+    }
+    registerOnChange(fn: any): void {
+        this.onChange = fn;
     }
     registerOnTouched(fn: any): void {
-        this.propagateChange = fn;
+        this.onTouched = fn;
     }
     setDisabledState?(isDisabled: boolean): void {
-        throw new Error("Method not implemented.");
+        this.textArea.nativeElement.disabled = isDisabled;
     }
+
+
     ngOnInit(): void {
         this.loadArea(this.textArea.nativeElement);
     }
@@ -60,12 +66,10 @@ export class TextareaComponent implements OnInit, ControlValueAccessor {
     resizeArea(event): void {
         const minRows = 4;
         const maxRows = 12;
-
         let obj = event.target;
         let key = event.keyCode || event.charCode;
         let currentScrollHeight = parseInt(obj.scrollHeight, 10);
         let lines = Math.floor(currentScrollHeight / this.lineHeight);
-
         const expandTextArea =
             lines <= maxRows && lines > minRows && (key == 8 || key == 46);
         const maxLitteralHeight = (maxRows - 1) * this.lineHeight + 'px';

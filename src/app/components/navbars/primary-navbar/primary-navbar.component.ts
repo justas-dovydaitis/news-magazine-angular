@@ -13,11 +13,11 @@ import { NavLink } from '../../../models/NavLink';
 export class PrimaryNavbarComponent implements OnInit {
     currentDate: Date = new Date();
     navLinksInternal: NavLink[] = [
-        new NavLink('Blog', '/'),
-        new NavLink('Latest', '/latest'),
-        new NavLink('Life', '/life'),
-        new NavLink('Travel', '/travel'),
-        new NavLink('Fashion', '/fashion')
+        new NavLink('Blog', 'categories/'),
+        new NavLink('Latest', 'categories/latest'),
+        new NavLink('Life', 'categories/life'),
+        new NavLink('Travel', 'categories/travel'),
+        new NavLink('Fashion', 'categories/fashion')
     ];
     navLinksExternal: SocialLink[] = [
         new SocialLink('Facebook', 'https://fb.com', 'facebook'),

@@ -9,13 +9,7 @@ import { Observable } from 'rxjs';
 export class CategoriesService {
     constructor(private http: ApiService) { };
     create(data: ICategory, image: File): Observable<ICategory> {
-        // const reqBody = this.createRequestBody(data, image);
-        // return this.http.post<IPost>(url, data, this.httpOptions)
-        //     .pipe(
-        //         retry(1),
-        //         catchError(this.handleError)
-        //     );
-        return new Observable<ICategory>()
+        throw new Error("Method not implemented.");
     }
     getOne(id: string): Observable<any> {
         throw new Error("Method not implemented.");
@@ -27,7 +21,7 @@ export class CategoriesService {
         throw new Error("Method not implemented.");
     }
     getList(params?: object): Observable<any> {
-        return this.http.get('/post', params && params, { 'Content-Type': 'application/json' });
+        return this.http.get('/categories', params && params, { 'Content-Type': 'application/json' });
     }
 
 }

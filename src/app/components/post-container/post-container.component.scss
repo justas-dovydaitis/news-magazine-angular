@@ -2,8 +2,8 @@
 @use 'spacing';
 
 :host {
-    display: flex;
-    flex-flow: wrap;
+    // display: flex;
+    // flex-flow: wrap;
     width: 100%;
     @include bp.use-breakpoint('large') {
         width: 65%;

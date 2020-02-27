@@ -25,6 +25,7 @@ import { LatestPostContainerComponent } from './components/latest-post-container
 import { PostContainerComponent } from './components/post-container/post-container.component';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
 import { IconComponent } from './components/icon/icon.component';
+import { NotFoundComponent } from './views/not-found/not-found.component';
 
 @NgModule({
     declarations: [
@@ -47,6 +48,7 @@ import { IconComponent } from './components/icon/icon.component';
         PostContainerComponent,
         TimeAgoPipe,
         IconComponent,
+        NotFoundComponent,
 
     ],
     imports: [

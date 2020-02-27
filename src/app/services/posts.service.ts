@@ -13,16 +13,13 @@ export class PostsService {
     constructor(private http: ApiService, ) { }
 
     create(data: IPost, image: File): Observable<IPost> {
-        // const reqBody = this.createRequestBody(data, image);
-        // return this.http.post<IPost>(url, data, this.httpOptions)
-        //     .pipe(
-        //         retry(1),
-        //         catchError(this.handleError)
-        //     );
-        return new Observable<IPost>()
+        const reqBody = this.createRequestBody(data, image);
+        //`posts`, reqBody, { 'Content-Type': 'application/json' }
+        console.log(reqBody);
+        return this.http.post<IPost>('', '');
     }
     getOne(id: string): Observable<any> {
-        throw new Error("Method not implemented.");
+        return this.http.get<IPost[]>(`posts/${id}`, { 'Content-Type': 'application/json' });
     }
     update(id: string, data: any): Observable<any> {
         throw new Error("Method not implemented.");
@@ -31,8 +28,8 @@ export class PostsService {
         throw new Error("Method not implemented.");
     }
     getList(params: object): Observable<IPost[]> {
-        const thing = this.http.get<IPost[]>('posts/', params, { 'Content-Type': 'application/json' });
-        return thing;
+        return this.http.get<IPost[]>('posts/', params, { 'Content-Type': 'application/json' });
+
     }
     createRequestBody(post: IPost, image?: File): FormData | string {
         if (image) {

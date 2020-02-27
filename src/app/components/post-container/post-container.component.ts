@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IPost } from 'src/app/models/Post';
-import { ICategory } from 'src/app/models/Category';
 import { PostsService } from 'src/app/services/posts.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-post-container',
@@ -10,14 +10,37 @@ import { PostsService } from 'src/app/services/posts.service';
 })
 export class PostContainerComponent implements OnInit {
 
-    public posts: IPost[];
+    public posts: IPost[] = [];
 
-    constructor(private service: PostsService) { }
+    constructor(
+        private service: PostsService,
+        private activatedRoute: ActivatedRoute) { }
+
     ngOnInit(): void {
+        this.activatedRoute.params.subscribe(routeParams => {
+            const category = this.activatedRoute.snapshot.params.category;
+            console.log(category)
+            this.loadPosts(category);
+        });
 
+    }
+    loadPosts(category?: string): void {
         this.service.getList({ limit: '10' }).subscribe(
             response => {
-                this.posts = response;
+                //reik normaliai padaryt is backo gaut
+                if (!category) {
+                    this.posts = response
+                }
+                else {
+                    this.posts = response.filter(post => {
+
+                        for (let cat of post.categories) {
+                            if (cat.name.toUpperCase() === category.toUpperCase()) return true;
+                        }
+                        return false
+
+                    });
+                }
                 console.log('Basic posts', this.posts)
             },
             err => {
@@ -29,6 +52,5 @@ export class PostContainerComponent implements OnInit {
 
             // }
         )
-
     }
 }

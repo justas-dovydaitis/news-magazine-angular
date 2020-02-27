@@ -1,5 +1,6 @@
 <hr class="divider" data-content="POSTS">
-<div class="post-controls py-2">
+<div class="post-controls">
     <a class="btn-add-post" routerLink="/create-post">Add post</a>
 </div>
 <app-post *ngFor="let post of posts;" [post]="post"></app-post>
+<h2 *ngIf="!posts.length">Sorry, no posts yet...</h2>

@@ -10,11 +10,11 @@ export class SecondaryNavbarComponent implements OnInit {
     navExpanded = false;
     navItems: NavLink[] = [
         new NavLink('Home', '/'),
-        new NavLink('Life', '/life'),
-        new NavLink('Vintage', '/vintage'),
-        new NavLink('Latest', '/latest'),
-        new NavLink('Travel', '/travel'),
-        new NavLink('Design', '/design')
+        new NavLink('Life', 'categories/life'),
+        new NavLink('Vintage', 'categories/vintage'),
+        new NavLink('Latest', 'categories/latest'),
+        new NavLink('Travel', 'categories/travel'),
+        new NavLink('Design', 'categories/design')
     ];
     constructor() { }
 

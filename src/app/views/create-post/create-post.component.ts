@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { PostsService } from 'src/app/services/posts.service';
 import { CategoriesService } from 'src/app/services/categories.service';
@@ -13,18 +13,13 @@ import { Option } from 'src/app/models/Option';
     styleUrls: ['./create-post.component.scss']
 })
 export class CreatePostComponent implements OnInit {
-    private postsService: PostsService;
-    private categoriesService: CategoriesService;
-    private activatedRoute: ActivatedRoute;
-
-
     protected postId: string;
     protected post: IPost;
     protected categories: ICategory[];
     protected edit = false;
 
     protected title = new FormControl('');
-    protected content = new FormControl('');
+    content = new FormControl('');
     protected image = new FormControl('');
     protected imageTitle = new FormControl('');
     protected imageAlt = new FormControl('');
@@ -43,23 +38,20 @@ export class CreatePostComponent implements OnInit {
     });
 
 
-    constructor(postsService: PostsService, categoryService: CategoriesService, activatedRoute: ActivatedRoute) {
-        this.postsService = postsService;
-        this.categoriesService = categoryService;
-        this.activatedRoute = activatedRoute;
+    constructor(private postsService: PostsService,
+        private categoryService: CategoriesService,
+        private activatedRoute: ActivatedRoute) {
         this.postId = this.activatedRoute.snapshot.params.id;
     }
 
     ngOnInit(): void {
         this.loadCategories();
-        this.selectedCategories.setValue(new Array<Option>({
-            name: "Travel",
-            value: "5e43d86a6622ef16309cf017",
-            selected: false
-        }))
+        if (this.postId) {
+            this.loadPost();
+        }
     }
     loadCategories(): void {
-        this.categoriesService.getList().subscribe(
+        this.categoryService.getList().subscribe(
             response => {
                 this.categories = response;
                 this.options = response.map(item => {
@@ -72,6 +64,9 @@ export class CreatePostComponent implements OnInit {
                 console.group('Post edit form: loading categories');
                 console.warn(`Something went wrong, response status is: ${err.status}.`);
                 console.groupEnd();
+            },
+            () => {
+
             }
         )
     }
@@ -85,11 +80,31 @@ export class CreatePostComponent implements OnInit {
                 console.group('Post edit form: loading post');
                 console.warn(`Something went wrong, response status is: ${err.status}.`);
                 console.groupEnd();
+            },
+            () => {
+                this.prefillForm();
             }
         );
     }
-    savePost() {
-        console.warn(this.postForm.value);
+    prefillForm(): void {
+        this.title.setValue(this.post.title);
+        this.content.setValue(this.post.content);
+        this.imageAlt.setValue(this.post.imageAlt);
+        this.imageTitle.setValue(this.post.imageTitle);
+        this.featured.setValue(this.post.featured);
+        this.selectedCategories.setValue(this.post.categories.map(cat => {
+            let option: Option = { name: cat.name, value: cat._id, selected: true };
+            return option;
+        }));
+
+    }
+    savePost(): void {
+        let data: IPost = {
+            ...this.postForm.value,
+            content: this.content.value
+
+        }
+        this.postsService.create(data, this.image.value)
     }
 
 }
