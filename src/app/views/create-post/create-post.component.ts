@@ -5,7 +5,7 @@ import { CategoriesService } from 'src/app/services/categories.service';
 import { ActivatedRoute } from '@angular/router';
 import { IPost } from 'src/app/models/post';
 import { ICategory } from 'src/app/models/Category';
-import { Option } from 'src/app/models/Option';
+// import { Option } from 'src/app/models/Option';
 
 @Component({
     selector: 'app-create-post',
@@ -21,11 +21,11 @@ export class CreatePostComponent implements OnInit {
     protected title = new FormControl('');
     content = new FormControl('');
     protected image = new FormControl('');
-    protected imageTitle = new FormControl('');
+    imageTitle = new FormControl('');
     protected imageAlt = new FormControl('');
     protected selectedCategories = new FormControl([]);
     protected featured = new FormControl(false);
-    options: Option[];
+    options: HTMLOptionElement[];
 
     postForm = new FormGroup({
         title: this.title,
@@ -49,13 +49,14 @@ export class CreatePostComponent implements OnInit {
         if (this.postId) {
             this.loadPost();
         }
+
     }
     loadCategories(): void {
         this.categoryService.getList().subscribe(
             response => {
                 this.categories = response;
                 this.options = response.map(item => {
-                    let opt: Option = { name: item.name, value: item._id, selected: false }
+                    let opt: HTMLOptionElement = new Option(item.name, item._id, false, false);
                     return opt;
                 })
                 console.log('Loaded categories', this.categories)
@@ -93,7 +94,7 @@ export class CreatePostComponent implements OnInit {
         this.imageTitle.setValue(this.post.imageTitle);
         this.featured.setValue(this.post.featured);
         this.selectedCategories.setValue(this.post.categories.map(cat => {
-            let option: Option = { name: cat.name, value: cat._id, selected: true };
+            let option: HTMLOptionElement = new Option(cat.name, cat._id, false, true);
             return option;
         }));
 

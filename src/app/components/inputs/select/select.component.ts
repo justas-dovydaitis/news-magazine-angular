@@ -17,60 +17,60 @@ import { Option } from 'src/app/models/Option';
     ]
 })
 export class SelectComponent implements OnChanges, ControlValueAccessor {
-    @ViewChild('#select', { static: true }) select: ElementRef;
-    @Input() options: Option[] = new Array<Option>();
-    @Input('selectedOptions') _selected = new Array<Option>();
-    unselected = new Array<Option>();
+    @ViewChild('#input', { static: true }) select: ElementRef<HTMLSelectElement>;
 
-    get selected(): Option[] { return this._selected; }
-    set selected(val: Option[]) {
-        if (val) {
+    @Input() options: HTMLOptionElement[] = []
+    @Input('value') _value: HTMLOptionElement[] = [];
+    unselected: HTMLOptionElement[] = [];
+
+
+    onChange: any = () => { }
+    onTouch: any = () => { }
+
+    get value(): HTMLOptionElement[] { return this._value; }
+    set value(val: HTMLOptionElement[]) {
+        if (val && this._value !== val) {
+            console.log(val)
             val.forEach(opt => {
-                this._selected.push(opt);
+
+                this._value.push(opt);
                 this.removeByValue(opt.value, this.unselected);
+                for (let index = 0; index < this.select.nativeElement.options.length; index++) {
+                    this.select.nativeElement.options[index].selected = opt.value === this.select.nativeElement.options[index].value ? true : false;
+                }
             })
-            this.propagateChange(this._selected);
+            this.onChange(val)
+            this.onTouch(val)
         }
     }
 
-    propagateChange = (_: any) => { };
 
-    writeValue(value: Option[]): void {
-        if (value) {
-            this.selected = value;
-            this.propagateChange(this.selected);
-        }
-    }
+    writeValue(value: HTMLOptionElement[]) { this.value = value }
+    registerOnChange(fn: any) { this.onChange = fn }
+    registerOnTouched(fn: any): void { this.onTouch = fn }
+    setDisabledState?(isDisabled: boolean): void { throw new Error("Method not implemented."); }
 
-    registerOnChange(fn: any) {
-        this.propagateChange = fn;
-    }
-    registerOnTouched(fn: any): void {
-        this.propagateChange = fn;
-    }
-    setDisabledState?(isDisabled: boolean): void {
-        throw new Error("Method not implemented.");
-    }
     selectOption(event): void {
-        let selectedOption: Option | false;
+        console.log(event);
+        let selectedOption: HTMLOptionElement | false;
         selectedOption = this.removeByValue(event.target.value, this.unselected);
         console.group('selecting')
-        console.log('SELECTED', this.selected)
+        console.log('SELECTED', this.value)
         console.log('NOT SELECTED', this.unselected)
         console.log('OBJ', selectedOption)
         console.groupEnd();
         if (selectedOption) {
             selectedOption.selected = true;
-            this.selected.push(selectedOption);
+            this.value.push(selectedOption);
         }
 
     }
     deselectOption(value: string): void {
 
-        let removedOption: Option | false;
-        removedOption = this.removeByValue(value, this.selected);
+        let removedOption: HTMLOptionElement | false;
+        removedOption = this.removeByValue(value, this.value);
         console.group('deselecting')
-        console.log('SELECTED', this.selected)
+        console.log('SELECTED', this.value)
         console.log('NOT SELECTED', this.unselected)
         console.log('OBJ', removedOption)
         console.groupEnd();
@@ -80,7 +80,7 @@ export class SelectComponent implements OnChanges, ControlValueAccessor {
         }
 
     }
-    removeByValue(val: string, arr: Option[]): Option | false {
+    removeByValue(val: string, arr: HTMLOptionElement[]): HTMLOptionElement | false {
         let removed: Option;
         let index = 0;
         for (let option of arr) {
@@ -95,11 +95,11 @@ export class SelectComponent implements OnChanges, ControlValueAccessor {
     }
 
     ngOnChanges(): void {
-        if (this.unselected && this.options && this._selected)
+        if (this.unselected && this.options && this.value)
             this.unselected = [
                 ...this.options.filter(opt => {
                     let contains = false;
-                    this.selected.forEach(sopt => {
+                    this.value.forEach(sopt => {
                         if (sopt.value === opt.value) {
                             contains = true;
                             return;

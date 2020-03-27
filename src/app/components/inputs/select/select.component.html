@@ -1,10 +1,10 @@
-<select (input)="selectOption($event)">
+<select #input [(ngModel)]="value" (input)="selectOption($event)">
     <option class="option">--- Select tags ---</option>
     <option class="option" *ngFor=" let option of unselected;" [value]="option.value">
-        {{option.name}}
+        {{option.text}}
     </option>
 </select>
 <div class="selected">
     <span class="selected-item" (click)="deselectOption(option.value)"
-        *ngFor="let option of selected">{{option.name}}</span>
+        *ngFor="let option of value">{{option.text}}</span>
 </div>

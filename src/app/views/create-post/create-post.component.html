@@ -14,7 +14,7 @@
     </div>
     <div class="form-group required">
         <label for="imageTitle">Image title</label>
-        <input formControlName="imageTitle" id="imageTitle" name='imageTitle' type="text" required />
+        <input [formControl]="imageTitle" id="imageTitle" name='imageTitle' type="text" required />
     </div>
 
     <div class="form-group required">
@@ -23,7 +23,7 @@
     </div>
 
     <div class="form-group required">
-        <app-select formControlName="categories" [options]="options"></app-select>
+        <app-select [formControl]="categories" formControlName="categories" [options]="options"></app-select>
     </div>
     <div class="form-group--inline">
         <input formControlName="featured" id="featured" name='featured' type="checkbox" />
